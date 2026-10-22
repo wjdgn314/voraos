@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>팩맨 — Classic Pac-Man</title>
+  <meta name="description" content="클래식 팩맨 게임. 유령을 피해 모든 점을 먹어라!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Particles Background -->
+  <div id="particles-container"></div>
+
+  <!-- Game Screen -->
+  <div id="app">
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen active">
+      <div class="logo-container">
+        <div class="pac-logo">
+          <div class="pac-icon"></div>
+        </div>
+        <h1 class="game-title">PAC-MAN</h1>
+        <p class="game-subtitle">팩맨</p>
+      </div>
+      <div class="menu-options">
+        <button id="btn-start" class="btn-primary" onclick="startGame()">
+          <span>게임 시작</span>
+          <div class="btn-glow"></div>
+        </button>
+        <div class="high-score-display">
+          <span class="hs-label">최고 점수</span>
+          <span id="hs-value" class="hs-value">0</span>
+        </div>
+      </div>
+      <div class="controls-hint">
+        <div class="control-item">
+          <span class="key-group">
+            <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+            &nbsp;/&nbsp;
+            <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd>
+          </span>
+          <span>이동</span>
+        </div>
+      </div>
+      <div class="ghost-parade">
+        <div class="ghost-mini ghost-blinky"></div>
+        <div class="ghost-mini ghost-pinky"></div>
+        <div class="ghost-mini ghost-inky"></div>
+        <div class="ghost-mini ghost-clyde"></div>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+      <div class="hud">
+        <div class="hud-item">
+          <span class="hud-label">SCORE</span>
+          <span id="score-display" class="hud-value">0</span>
+        </div>
+        <div class="hud-item lives-display">
+          <span class="hud-label">LIVES</span>
+          <div id="lives-icons" class="lives-icons"></div>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">LEVEL</span>
+          <span id="level-display" class="hud-value">1</span>
+        </div>
+      </div>
+      <div id="canvas-wrapper">
+        <canvas id="game-canvas"></canvas>
+        <div id="overlay-message" class="overlay-message hidden">
+          <p id="overlay-text"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="gameover-screen" class="screen">
+      <div class="gameover-content">
+        <h2 class="gameover-title">GAME OVER</h2>
+        <div class="final-score-container">
+          <p class="final-label">최종 점수</p>
+          <p id="final-score" class="final-score-value">0</p>
+        </div>
+        <div id="new-record" class="new-record hidden">🏆 신기록!</div>
+        <button id="btn-restart" class="btn-primary" onclick="restartGame()">
+          <span>다시 시작</span>
+          <div class="btn-glow"></div>
+        </button>
+        <button id="btn-menu" class="btn-secondary" onclick="goToMenu()">
+          <span>메인 메뉴</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Win Screen -->
+    <div id="win-screen" class="screen">
+      <div class="win-content">
+        <div class="win-stars">⭐⭐⭐</div>
+        <h2 class="win-title">YOU WIN!</h2>
+        <p class="win-subtitle">레벨 클리어!</p>
+        <div class="final-score-container">
+          <p class="final-label">점수</p>
+          <p id="win-score" class="final-score-value">0</p>
+        </div>
+        <button id="btn-next" class="btn-primary" onclick="nextLevel()">
+          <span>다음 레벨</span>
+          <div class="btn-glow"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
